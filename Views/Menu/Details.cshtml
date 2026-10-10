@@ -1,0 +1,22 @@
+@model MenuItem
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<section class="detail-section">
+    <div class="container detail-grid">
+        <div class="detail-photo"><img src="~/images/signature-dish.png" alt="@Model.Name sunumu" /></div>
+        <div class="detail-copy">
+            <span class="eyebrow">@Model.Category</span>
+            @if (Model.IsChefSpecial) { <span class="badge">Şefin seçimi</span> }
+            <h1>@Model.Name</h1>
+            <p class="lead">@Model.Description</p>
+            <div class="price">@Model.Price.ToString("N0") ₺</div>
+            <p>Yemeğimiz sipariş üzerine hazırlanır. Alerjen veya özel beslenme tercihleriniz için servis ekibimize bilgi verebilirsiniz.</p>
+            <div class="hero-actions">
+                <a class="button" asp-controller="Reservations" asp-action="Create">Masa Ayır</a>
+                <a class="text-link" asp-action="Index">← Menüye dön</a>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,44 @@
+@model IReadOnlyList<MenuItem>
+@{
+    ViewData["Title"] = "Menü";
+    var categories = ViewData["Categories"] as List<string> ?? new List<string>();
+    var selectedCategory = ViewData["SelectedCategory"] as string;
+}
+
+<section class="page-hero compact menu-hero">
+    <div class="container">
+        <span class="eyebrow light">Mevsim · Güncel seçki</span>
+        <h1>Mevsimin<br /><em>ritmi.</em></h1>
+        <p>Yerel üreticiler, mevsim ve doğanın ritmiyle şekillenen çağdaş bir tadım yolculuğu.</p>
+    </div>
+</section>
+
+<section class="section container">
+    <div class="filter-bar" aria-label="Menü kategorileri">
+        <a class="filter-pill @(string.IsNullOrEmpty(selectedCategory) ? "active" : "")" asp-action="Index">Tümü</a>
+        @foreach (var category in categories)
+        {
+            <a class="filter-pill @(selectedCategory == category ? "active" : "")" asp-action="Index" asp-route-category="@category">@category</a>
+        }
+    </div>
+
+    @if (Model.Count == 0)
+    {
+        <div class="empty-state"><h2>Bu kategoride ürün bulunamadı.</h2><a class="text-link" asp-action="Index">Tüm menüye dön →</a></div>
+    }
+    else
+    {
+        <div class="editorial-menu">
+            <figure><img src="~/images/signature-dish.png" alt="AHENK mevsimsel tadım menüsü" /><figcaption>Mevsimsel tadım · Sonbahar seçkisi</figcaption></figure>
+            <div class="menu-list">
+                @foreach (var item in Model)
+                {
+                    <article class="menu-line">
+                        <div><span class="menu-category">@item.Category @if (item.IsChefSpecial) { <small>· Şefin seçimi</small> }</span><h2>@item.Name</h2><p>@item.Description</p></div>
+                        <div class="menu-line-side"><strong>@item.Price.ToString("N0") ₺</strong><a asp-action="Details" asp-route-id="@item.Id" aria-label="@item.Name detayları">↗</a></div>
+                    </article>
+                }
+            </div>
+        </div>
+    }
+</section>
