@@ -9,4 +9,5 @@ public class MenuItem
     public decimal Price { get; set; }
     public string AccentClass { get; set; } = "accent-terracotta";
     public bool IsChefSpecial { get; set; }
+    public string? InspiredBy { get; set; }
 }
