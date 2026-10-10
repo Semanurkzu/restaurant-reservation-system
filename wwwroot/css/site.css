@@ -112,6 +112,8 @@ em { color: #d2af79; font-weight: 600; }
 .team-award > div { display: grid; }
 .team-award strong { font: 600 16px/1.2 var(--serif); }
 .team-award small { margin-top: 3px; color: #bfc9c2; font-size: 8px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+.team-award-copy { margin: 0 0 14px; padding-left: 14px; color: var(--muted); border-left: 2px solid var(--brass); font-size: 12px; line-height: 1.7; }
+.team-award-copy strong { color: var(--forest); font-family: var(--serif); font-size: 15px; font-weight: 600; }
 .team-intro { margin-bottom: 20px; color: var(--muted); font-size: 13px; }
 .team-list { display: grid; gap: 0; margin: 0 0 20px; padding: 0; list-style: none; }
 .team-list li { display: flex; align-items: flex-start; gap: 16px; padding: 22px 0; border-bottom: 1px solid var(--line); }
