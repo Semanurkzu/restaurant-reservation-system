@@ -3,6 +3,7 @@
     ViewData["Title"] = "Menü";
     var categories = ViewData["Categories"] as List<string> ?? new List<string>();
     var selectedCategory = ViewData["SelectedCategory"] as string;
+    var tastingMenu = ViewData["TastingMenu"] as IReadOnlyList<TastingCourse> ?? new List<TastingCourse>();
 }
 
 <section class="page-hero compact menu-hero">
@@ -13,7 +14,30 @@
     </div>
 </section>
 
+<section class="tasting-section">
+    <div class="container">
+        <div class="tasting-heading">
+            <div>
+                <span class="eyebrow light">16 servis · Minimal tabaklar</span>
+                <h2>AHENK Tadım<br /><em>Deneyimi</em></h2>
+                <p>Tek lokmalardan ana servislere uzanan, küçük porsiyonlarla ilerleyen zengin bir gastronomi yolculuğu. Menü boyunca mevsimsel ve tamamen alkolsüz içecek eşleşmeleri sunulur.</p>
+            </div>
+            <div class="tasting-price"><small>Kişi başı</small><strong>18.750 ₺</strong><span>Rezervasyon gereklidir</span></div>
+        </div>
+        <div class="tasting-grid">
+            @foreach (var course in tastingMenu)
+            {
+                <article class="tasting-course">
+                    <span class="course-number">@course.Sequence.ToString("00")</span>
+                    <div><small>@course.Moment</small><h3>@course.Name</h3><p>@course.Description</p></div>
+                </article>
+            }
+        </div>
+    </div>
+</section>
+
 <section class="section container">
+    <div class="section-heading menu-selection-heading"><div><span class="eyebrow">Alakart</span><h2>Geniş mevsim seçkisi</h2></div><p>Başlangıçlardan tatlılara ve özgün alkolsüz içeceklere uzanan güncel AHENK menüsü.</p></div>
     <div class="filter-bar" aria-label="Menü kategorileri">
         <a class="filter-pill @(string.IsNullOrEmpty(selectedCategory) ? "active" : "")" asp-action="Index">Tümü</a>
         @foreach (var category in categories)
