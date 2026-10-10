@@ -97,6 +97,21 @@ em { color: #d2af79; font-weight: 600; }
 .page-hero p { max-width: 680px; color: #c6c8c3; font-size: 17px; }
 .page-hero-row { display: flex; align-items: center; justify-content: space-between; gap: 44px; }
 .menu-hero { background: linear-gradient(120deg, #20211e, #384139); }
+.tasting-section { padding-block: 110px; color: #f7f2e9; background: var(--forest); }
+.tasting-heading { display: grid; grid-template-columns: 1fr auto; gap: 80px; align-items: end; margin-bottom: 64px; }
+.tasting-heading h2 { margin: 10px 0 18px; color: white; }
+.tasting-heading h2 em { color: #dfc89f; }
+.tasting-heading p { max-width: 680px; margin: 0; color: #bbc5be; font-size: 15px; }
+.tasting-price { min-width: 230px; padding: 24px; border: 1px solid rgba(223, 200, 159, .45); text-align: right; }
+.tasting-price small, .tasting-price span { display: block; color: #bbc5be; font-size: 9px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+.tasting-price strong { display: block; margin: 7px 0; color: #dfc89f; font: 600 34px/1 var(--serif); }
+.tasting-grid { display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(255, 255, 255, .2); border-left: 1px solid rgba(255, 255, 255, .2); }
+.tasting-course { min-height: 190px; padding: 24px; border-right: 1px solid rgba(255, 255, 255, .2); border-bottom: 1px solid rgba(255, 255, 255, .2); }
+.course-number { color: #dfc89f; font: 600 11px/1 var(--sans); letter-spacing: .14em; }
+.tasting-course small { display: block; margin: 26px 0 7px; color: #9eaaa2; font-size: 8px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.tasting-course h3 { margin: 0 0 7px; color: white; font-size: 22px; }
+.tasting-course p { margin: 0; color: #bbc5be; font-size: 12px; line-height: 1.55; }
+.menu-selection-heading { margin-bottom: 36px; }
 .reservation-hero { background: linear-gradient(120deg, #23231f, #4a3028); }
 .section { padding-block: 110px; }
 .section-soft { width: 100%; background: var(--ivory); }
@@ -236,10 +251,19 @@ em { color: #d2af79; font-weight: 600; }
     .editorial-menu { grid-template-columns: 1fr; }
     .editorial-menu figure { position: static; }
     .editorial-menu figure img { height: 500px; }
+    .tasting-heading { grid-template-columns: 1fr; gap: 30px; }
+    .tasting-price { max-width: 280px; text-align: left; }
+    .tasting-grid { grid-template-columns: repeat(2, 1fr); }
     .menu-line h2 { font-size: 26px; }
     .roadmap-grid, .footer-grid { grid-template-columns: 1fr; }
     .reservation-form { grid-template-columns: 1fr; padding: 28px 22px; }
     .field { grid-column: 1 / -1; }
     .success-card { padding: 42px 24px; }
     .reservation-banner { padding-block: 78px; }
+}
+
+@media (max-width: 620px) {
+    .tasting-section { padding-block: 76px; }
+    .tasting-grid { grid-template-columns: 1fr; }
+    .tasting-course { min-height: auto; }
 }
