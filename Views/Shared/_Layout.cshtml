@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="AHENK - çağdaş ve mevsimsel restoran deneyimi" />
+    <title>@ViewData["Title"] - AHENK</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Playfair+Display:wght@600;700&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body class="@ViewData["BodyClass"]">
+    <header class="site-header">
+        <nav class="navbar container" aria-label="Ana menü">
+            <a class="brand" asp-controller="Home" asp-action="Index" aria-label="AHENK ana sayfa">
+                <span class="brand-mark">A</span>
+                <span class="brand-word">AHENK</span>
+            </a>
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+                <span></span><span></span><span></span>
+                <span class="sr-only">Menüyü aç</span>
+            </button>
+            <div class="nav-links" id="primary-navigation">
+                <a asp-controller="Home" asp-action="Index">Ana Sayfa</a>
+                <a asp-controller="Menu" asp-action="Index">Menü</a>
+                <a asp-controller="Reservations" asp-action="Index">Rezervasyonlar</a>
+                <a asp-controller="Home" asp-action="About">Hakkımızda</a>
+                <a class="button button-small" asp-controller="Reservations" asp-action="Create">Masa Ayır</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div>
+                <a class="brand brand-footer" asp-controller="Home" asp-action="Index">
+                    <span class="brand-mark">A</span><span class="brand-word">AHENK</span>
+                </a>
+                <p>Üç hikâye, tek sofra. Mevsimsel ve zamansız bir deneyim.</p>
+            </div>
+            <div>
+                <strong>Hızlı Bağlantılar</strong>
+                <a asp-controller="Menu" asp-action="Index">Menümüz</a>
+                <a asp-controller="Reservations" asp-action="Create">Rezervasyon</a>
+            </div>
+            <div>
+                <strong>İletişim</strong>
+                <span>Şehir merkezinde</span>
+                <span>+90 555 000 00 00</span>
+            </div>
+        </div>
+        <div class="container footer-bottom">© @DateTime.Now.Year AHENK - Beyza, Nisa &amp; Semanur</div>
+    </footer>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
