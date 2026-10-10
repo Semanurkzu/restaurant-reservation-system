@@ -1,0 +1,31 @@
+@model IReadOnlyList<Reservation>
+@{
+    ViewData["Title"] = "Rezervasyonlar";
+}
+
+<section class="page-hero compact reservation-hero">
+    <div class="container page-hero-row">
+        <div><span class="eyebrow">Güncel plan</span><h1>Rezervasyonlar</h1><p>Yaklaşan masa taleplerinin dinamik Razor tablosu.</p></div>
+        <a class="button button-light" asp-action="Create">Yeni Rezervasyon</a>
+    </div>
+</section>
+
+<section class="section container">
+    <div class="table-wrap">
+        <table class="reservation-table">
+            <thead><tr><th>Misafir</th><th>Tarih ve Saat</th><th>Kişi</th><th>Durum</th></tr></thead>
+            <tbody>
+                @foreach (var reservation in Model)
+                {
+                    <tr>
+                        <td><strong>@reservation.CustomerName</strong><small>@reservation.Phone</small></td>
+                        <td>@reservation.ReservationDate.ToString("dd MMMM yyyy, HH:mm", new System.Globalization.CultureInfo("tr-TR"))</td>
+                        <td>@reservation.GuestCount kişi</td>
+                        <td><span class="status @(reservation.Status == "Onaylandı" ? "confirmed" : "pending")">@reservation.Status</span></td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <p class="muted table-note">Bu veriler ilk hafta için Controller içerisindeki örnek listeden Razor ile üretilmektedir.</p>
+</section>

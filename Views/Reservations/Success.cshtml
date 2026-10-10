@@ -1,0 +1,13 @@
+@{
+    ViewData["Title"] = "Rezervasyon Alındı";
+}
+
+<section class="success-section">
+    <div class="success-card">
+        <div class="success-icon">✓</div>
+        <span class="eyebrow">Talebiniz alındı</span>
+        <h1>Teşekkürler, @TempData["ReservationName"]!</h1>
+        <p><strong>@TempData["ReservationDate"]</strong> için rezervasyon talebiniz başarıyla kaydedildi.</p>
+        <div class="hero-actions centered"><a class="button" asp-action="Index">Rezervasyonları Gör</a><a class="text-link" asp-controller="Home" asp-action="Index">Ana sayfaya dön</a></div>
+    </div>
+</section>

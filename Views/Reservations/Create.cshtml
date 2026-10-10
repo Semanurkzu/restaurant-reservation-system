@@ -1,0 +1,25 @@
+@model Reservation
+@{
+    ViewData["Title"] = "Masa Ayır";
+}
+
+<section class="form-section">
+    <div class="container form-grid">
+        <div class="form-intro">
+            <span class="eyebrow">Sofranız hazır</span>
+            <h1>Masa ayırtın</h1>
+            <p>Tarih ve kişi bilgilerinizi bırakın; rezervasyon talebinizi hemen oluşturalım.</p>
+            <div class="contact-card"><span>Akşam servisi</span><strong>18.00 - 00.00</strong><span>Rezervasyon hattı</span><strong>+90 555 000 00 00</strong></div>
+        </div>
+        <form class="reservation-form" asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+            <div class="field full"><label asp-for="CustomerName"></label><input asp-for="CustomerName" placeholder="Adınız ve soyadınız" /><span asp-validation-for="CustomerName"></span></div>
+            <div class="field full"><label asp-for="Phone"></label><input asp-for="Phone" placeholder="05xx xxx xx xx" /><span asp-validation-for="Phone"></span></div>
+            <div class="field"><label asp-for="ReservationDate"></label><input asp-for="ReservationDate" type="datetime-local" asp-format="{0:yyyy-MM-ddTHH:mm}" /><span asp-validation-for="ReservationDate"></span></div>
+            <div class="field"><label asp-for="GuestCount"></label><select asp-for="GuestCount">@for (var i = 1; i <= 12; i++) { <option value="@i">@i kişi</option> }</select><span asp-validation-for="GuestCount"></span></div>
+            <div class="field full"><label asp-for="Note"></label><textarea asp-for="Note" rows="4" placeholder="Doğum günü, alerji veya masa tercihi..."></textarea><span asp-validation-for="Note"></span></div>
+            <button class="button full" type="submit">Rezervasyon Talebi Oluştur</button>
+            <small class="form-hint">Talebiniz “Bekliyor” durumunda kaydedilir.</small>
+        </form>
+    </div>
+</section>
