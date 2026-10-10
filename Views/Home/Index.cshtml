@@ -1,0 +1,54 @@
+@{
+    ViewData["Title"] = "Ana Sayfa";
+    ViewData["BodyClass"] = "home-page";
+}
+
+<section class="hero">
+    <div class="hero-shade"></div>
+    <div class="container hero-content">
+        <div class="hero-copy">
+            <span class="eyebrow light">Çağdaş · Mevsimsel mutfak</span>
+            <h1>Üç hikâye.<br /><em>Tek sofra.</em></h1>
+            <p>Üniversitenin ilk gününde başlayan bir dostluğun; mevsim, doğa ve sofra kültürüyle buluştuğu çağdaş restoran deneyimi.</p>
+            <div class="hero-actions">
+                <a class="button" asp-controller="Reservations" asp-action="Create">Rezervasyon Yap</a>
+                <a class="text-link light-link" asp-controller="Menu" asp-action="Index">Tadım menüsünü keşfet <span>→</span></a>
+            </div>
+        </div>
+        <div class="hero-foot">
+            <span>AHENK · 2026'DAN BERİ</span>
+            <span>Akşam servisi · 18.00 — 00.00</span>
+        </div>
+    </div>
+</section>
+
+<section class="story-section">
+    <div class="container story-grid">
+        <div class="story-image"><img src="~/images/signature-dish.png" alt="AHENK'in mevsimsel imza tabağı" /></div>
+        <div class="story-copy">
+            <span class="eyebrow">Bizim hikâyemiz</span>
+            <p class="story-kicker">Birinci gün tanıştık.<br />Aynı masada büyüdük.</p>
+            <h2>Bağ gibi köklenen<br />bir dostluk.</h2>
+            <p>AHENK; Beyza, Nisa ve Semanur'un üniversitenin ilk gününden beri kurduğu yakın dostluğun simgesi. Doğadan ve mevsimden ilham alan soframız, paylaşmanın en yalın ve zarif hâlini anlatıyor.</p>
+            <a class="text-link" asp-controller="Home" asp-action="About">Hikâyemizi oku <span>→</span></a>
+        </div>
+    </div>
+</section>
+
+<section class="experience-section">
+    <div class="container">
+        <div class="section-heading luxury-heading">
+            <div><span class="eyebrow light">AHENK deneyimi</span><h2>Akşamın ritmi,<br />mevsimin lezzeti.</h2></div>
+            <p>Menümüz her mevsim yeniden şekillenir. Yerel ürünlere, sakin servise ve masada geçirilen zamana özen gösteririz.</p>
+        </div>
+        <div class="experience-list">
+            <article><span>01</span><h3>Mevsim</h3><p>Gediz Ovası'ndan gelen ürünlerle sürekli yenilenen yalın tabaklar.</p></article>
+            <article><span>02</span><h3>Sofra</h3><p>Paylaşmaya, sohbete ve uzun akşamlara göre tasarlanmış bir deneyim.</p></article>
+            <article><span>03</span><h3>Hatıra</h3><p>Üç dostun hikâyesinden doğan, her misafire sıcak ve kişisel yaklaşım.</p></article>
+        </div>
+    </div>
+</section>
+
+<section class="reservation-banner">
+    <div class="container reservation-banner-inner"><span class="eyebrow light">AHENK'te bir akşam</span><h2>Masamızda yeriniz hazır.</h2><a class="button button-cream" asp-controller="Reservations" asp-action="Create">Masa Ayır</a></div>
+</section>
