@@ -34,7 +34,15 @@
                 @foreach (var item in Model)
                 {
                     <article class="menu-line">
-                        <div><span class="menu-category">@item.Category @if (item.IsChefSpecial) { <small>· Şefin seçimi</small> }</span><h2>@item.Name</h2><p>@item.Description</p></div>
+                        <div>
+                            <span class="menu-category">@item.Category @if (item.IsChefSpecial) { <small>· Şefin seçimi</small> }</span>
+                            <h2>@item.Name</h2>
+                            <p>@item.Description</p>
+                            @if (!string.IsNullOrWhiteSpace(item.InspiredBy))
+                            {
+                                <span class="menu-inspiration">İlham veren şef · @item.InspiredBy</span>
+                            }
+                        </div>
                         <div class="menu-line-side"><strong>@item.Price.ToString("N0") ₺</strong><a asp-action="Details" asp-route-id="@item.Id" aria-label="@item.Name detayları">↗</a></div>
                     </article>
                 }

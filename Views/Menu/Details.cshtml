@@ -11,6 +11,10 @@
             @if (Model.IsChefSpecial) { <span class="badge">Şefin seçimi</span> }
             <h1>@Model.Name</h1>
             <p class="lead">@Model.Description</p>
+            @if (!string.IsNullOrWhiteSpace(Model.InspiredBy))
+            {
+                <p class="detail-inspiration"><span>İlham veren şef</span><strong>@Model.InspiredBy</strong></p>
+            }
             <div class="price">@Model.Price.ToString("N0") ₺</div>
             <p>Yemeğimiz sipariş üzerine hazırlanır. Alerjen veya özel beslenme tercihleriniz için servis ekibimize bilgi verebilirsiniz.</p>
             <div class="hero-actions">
