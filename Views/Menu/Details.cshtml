@@ -1,6 +1,7 @@
 @model MenuItem
 @{
     ViewData["Title"] = Model.Name;
+    var relatedItems = ViewData["RelatedItems"] as IReadOnlyList<MenuItem> ?? new List<MenuItem>();
 }
 
 <section class="detail-section">
@@ -24,3 +25,16 @@
         </div>
     </div>
 </section>
+
+@if (relatedItems.Count > 0)
+{
+    <section class="section container related-section">
+        <div class="section-heading menu-selection-heading"><div><span class="eyebrow">@Model.Category</span><h2>Bunları da beğenebilirsiniz</h2></div></div>
+        <div class="menu-list">
+            @foreach (var item in relatedItems)
+            {
+                <partial name="_MenuLine" model="item" />
+            }
+        </div>
+    </section>
+}

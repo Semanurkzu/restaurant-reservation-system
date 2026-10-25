@@ -1,8 +1,10 @@
 using Microsoft.AspNetCore.DataProtection;
+using RestaurantReservationSystem.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<ReservationStore>();
 builder.Services.AddDataProtection()
     .PersistKeysToFileSystem(new DirectoryInfo(Path.Combine(builder.Environment.ContentRootPath, ".keys")))
     .SetApplicationName("RestaurantReservationSystem");
@@ -23,5 +25,6 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
 
 app.Run();

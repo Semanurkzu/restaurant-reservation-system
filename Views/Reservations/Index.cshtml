@@ -1,6 +1,7 @@
 @model IReadOnlyList<Reservation>
 @{
     ViewData["Title"] = "Rezervasyonlar";
+    var newReservationId = TempData["NewReservationId"] as int?;
 }
 
 <section class="page-hero compact reservation-hero">
@@ -13,19 +14,20 @@
 <section class="section container">
     <div class="table-wrap">
         <table class="reservation-table">
-            <thead><tr><th>Misafir</th><th>Tarih ve Saat</th><th>Kişi</th><th>Durum</th></tr></thead>
+            <thead><tr><th>Misafir</th><th>Tarih ve Saat</th><th>Kişi</th><th>Tercih</th><th>Durum</th></tr></thead>
             <tbody>
                 @foreach (var reservation in Model)
                 {
-                    <tr>
+                    <tr class="@(reservation.Id == newReservationId ? "is-new" : "")">
                         <td><strong>@reservation.CustomerName</strong><small>@reservation.Phone</small></td>
                         <td>@reservation.ReservationDate.ToString("dd MMMM yyyy, HH:mm", new System.Globalization.CultureInfo("tr-TR"))</td>
                         <td>@reservation.GuestCount kişi</td>
+                        <td>@reservation.SeatingArea @if (reservation.IsSpecialOccasion) { <span class="badge">Özel gün</span> } @if (!string.IsNullOrWhiteSpace(reservation.Note)) { <small class="table-cell-note">@reservation.Note</small> }</td>
                         <td><span class="status @(reservation.Status == "Onaylandı" ? "confirmed" : "pending")">@reservation.Status</span></td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
-    <p class="muted table-note">Bu veriler ilk hafta için Controller içerisindeki örnek listeden Razor ile üretilmektedir.</p>
+    <p class="muted table-note">“Masa Ayır” formundan gönderilen her talep bu tabloya anında eklenir. Veriler uygulama çalıştığı sürece bellekte tutulur.</p>
 </section>

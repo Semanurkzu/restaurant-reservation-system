@@ -17,6 +17,18 @@
 - [x] Razor ile dinamik menü kartları ve rezervasyon tablosu
 - [x] Model doğrulamalı rezervasyon formu
 
+## İkinci hafta gereksinimleri
+
+- [x] **ViewComponent:** `UpcomingReservationsViewComponent` yaklaşan rezervasyonları kendi verisiyle listeler.
+  - Ana sayfada (`Home/Index`) 3 kayıtla, "Masa Ayır" sayfasında (`Reservations/Create`) 2 kayıtla ve farklı başlıkla gösterilir.
+- [x] **PartialView:** `_ReservationCard`, rezervasyon özet kartıdır. ViewComponent içinde ve başarı sayfasında (`Reservations/Success`) kullanılır.
+- [x] **PartialView:** `_MenuLine`, menü satırıdır. Menü listesinde (`Menu/Index`) ve detay sayfasının "Bunları da beğenebilirsiniz" bölümünde (`Menu/Details`) kullanılır.
+- [x] **HtmlHelpers ile form:** Rezervasyon formu `Html.BeginForm`, `LabelFor`, `TextBoxFor`, `DropDownListFor`, `CheckBoxFor`, `TextAreaFor`, `ValidationMessageFor` ve `AntiForgeryToken` ile oluşturuldu.
+- [x] **Sayfalar arası veri:** Formdan girilen rezervasyon, singleton `ReservationStore` servisine kaydedilir ve hemen şu sayfalarda görünür:
+  - Başarı sayfası
+  - Rezervasyon listesi (yeni kayıt vurgulanır)
+  - Ana sayfadaki ViewComponent
+
 ## MVC yapısı
 
 | Controller | View'lar |

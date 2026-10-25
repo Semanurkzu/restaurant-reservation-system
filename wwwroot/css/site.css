@@ -212,12 +212,39 @@ em { color: #d2af79; font-weight: 600; }
 .footer-grid strong { color: white; margin-bottom: 12px; font-size: 10px; letter-spacing: .15em; text-transform: uppercase; }
 .footer-bottom { margin-top: 48px; padding-top: 20px; border-top: 1px solid #343d38; color: #7f8a84; font-size: 10px; letter-spacing: .1em; }
 
+.upcoming-section { padding-block: 110px; }
+.upcoming-grid { display: grid; grid-template-columns: .9fr 1.1fr; gap: 90px; align-items: center; }
+.upcoming-grid h2 { margin-bottom: 20px; }
+.upcoming-grid > div > p { max-width: 460px; margin-bottom: 30px; font-size: 16px; }
+.upcoming-widget { display: grid; gap: 20px; padding: 34px; background: var(--paper); border-top: 2px solid var(--brass); box-shadow: var(--shadow); }
+.form-intro .upcoming-widget { margin-top: 28px; padding: 26px; box-shadow: none; }
+.upcoming-head .eyebrow { margin-bottom: 8px; }
+.upcoming-head h3 { margin: 0 0 6px; }
+.upcoming-head small { color: var(--muted); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+.upcoming-list { display: grid; border-top: 1px solid var(--line); }
+.reservation-card { display: grid; grid-template-columns: auto 1fr auto; gap: 18px; align-items: center; padding: 18px 0; border-bottom: 1px solid var(--line); text-align: left; }
+.reservation-card-date { width: 58px; display: grid; justify-items: center; padding: 8px 0; color: white; background: var(--forest); }
+.reservation-card-date strong { font: 600 22px/1 var(--serif); }
+.reservation-card-date span { color: #dfc89f; font-size: 9px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.reservation-card-body h4 { margin: 0 0 2px; font: 600 19px/1.2 var(--serif); }
+.reservation-card-body p { margin: 0; color: var(--muted); font-size: 13px; }
+.reservation-card-body .badge { margin: 6px 0 0; }
+.reservation-card-body small { display: block; margin-top: 6px; color: var(--muted); font-size: 12px; font-style: italic; }
+.success-card .reservation-card { margin: 26px 0 10px; padding: 18px; background: var(--ivory); border: 0; }
+.related-section { padding-top: 0; }
+.reservation-table tr.is-new td { background: #f7ecd1; }
+.reservation-table .badge { margin-left: 6px; }
+.table-cell-note { display: block; margin-top: 4px; font-style: italic; }
+.field.field-check { display: flex; align-items: center; gap: 12px; }
+.field.field-check input { width: 18px; height: 18px; padding: 0; accent-color: var(--clay); }
+.field.field-check label { cursor: pointer; }
+
 @media (max-width: 920px) {
     .nav-toggle { display: block; }
     .nav-links { position: absolute; inset: 88px 0 auto; display: none; flex-direction: column; align-items: stretch; padding: 30px 28px; color: white; background: rgba(23, 27, 24, .98); box-shadow: var(--shadow); }
     .nav-links.open { display: flex; }
     .site-header:not(.home-page .site-header) .nav-links { color: white; }
-    .story-grid, .two-column, .detail-grid, .form-grid { grid-template-columns: 1fr; gap: 60px; }
+    .story-grid, .two-column, .detail-grid, .form-grid, .upcoming-grid { grid-template-columns: 1fr; gap: 60px; }
     .story-image img, .detail-photo img { height: 560px; }
     .editorial-menu { grid-template-columns: .72fr 1.28fr; gap: 42px; }
     .experience-list { grid-template-columns: 1fr; }
@@ -241,7 +268,10 @@ em { color: #d2af79; font-weight: 600; }
     .hero-actions { align-items: flex-start; flex-direction: column; gap: 22px; }
     .hero-actions.centered { align-items: center; }
     .hero-foot { display: grid; gap: 8px; margin-top: 58px; }
-    .story-section, .section, .experience-section, .form-section, .detail-section { padding-block: 76px; }
+    .story-section, .section, .experience-section, .form-section, .detail-section, .upcoming-section { padding-block: 76px; }
+    .upcoming-widget { padding: 24px 20px; }
+    .reservation-card { grid-template-columns: auto 1fr; }
+    .reservation-card > .status { grid-column: 2; justify-self: start; }
     .story-grid { gap: 48px; }
     .story-image img, .detail-photo img { height: 480px; }
     .team-photo img { height: 440px; }

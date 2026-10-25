@@ -73,6 +73,15 @@ public class MenuController : Controller
     public IActionResult Details(int id)
     {
         var item = MenuItems.FirstOrDefault(menuItem => menuItem.Id == id);
-        return item is null ? NotFound() : View(item);
+        if (item is null)
+        {
+            return NotFound();
+        }
+
+        ViewData["RelatedItems"] = MenuItems
+            .Where(menuItem => menuItem.Category == item.Category && menuItem.Id != item.Id)
+            .Take(3)
+            .ToList();
+        return View(item);
     }
 }

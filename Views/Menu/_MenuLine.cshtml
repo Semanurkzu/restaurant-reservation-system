@@ -1,0 +1,14 @@
+@model MenuItem
+
+<article class="menu-line">
+    <div>
+        <span class="menu-category">@Model.Category @if (Model.IsChefSpecial) { <small>· Şefin seçimi</small> }</span>
+        <h2>@Model.Name</h2>
+        <p>@Model.Description</p>
+        @if (!string.IsNullOrWhiteSpace(Model.InspiredBy))
+        {
+            <span class="menu-inspiration">İlham veren şef · @Model.InspiredBy</span>
+        }
+    </div>
+    <div class="menu-line-side"><strong>@Model.Price.ToString("N0") ₺</strong><a asp-controller="Menu" asp-action="Details" asp-route-id="@Model.Id" aria-label="@Model.Name detayları">↗</a></div>
+</article>

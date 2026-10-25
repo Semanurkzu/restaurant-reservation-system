@@ -3,5 +3,10 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <!-- .NET 8 yoksa kurulu daha yeni runtime (ör. .NET 10) ile çalışır -->
+    <RollForward>Major</RollForward>
   </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="tempCodeRunnerFile.cs" />
+  </ItemGroup>
 </Project>

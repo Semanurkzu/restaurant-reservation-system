@@ -1,3 +1,4 @@
+@model Reservation
 @{
     ViewData["Title"] = "Rezervasyon Alındı";
 }
@@ -6,8 +7,9 @@
     <div class="success-card">
         <div class="success-icon">✓</div>
         <span class="eyebrow">Talebiniz alındı</span>
-        <h1>Teşekkürler, @TempData["ReservationName"]!</h1>
-        <p><strong>@TempData["ReservationDate"]</strong> için rezervasyon talebiniz başarıyla kaydedildi.</p>
+        <h1>Teşekkürler, @Model.CustomerName!</h1>
+        <p><strong>@Model.ReservationDate.ToString("dd.MM.yyyy HH:mm")</strong> için rezervasyon talebiniz başarıyla kaydedildi.</p>
+        <partial name="_ReservationCard" model="Model" />
         <div class="hero-actions centered"><a class="button" asp-action="Index">Rezervasyonları Gör</a><a class="text-link" asp-controller="Home" asp-action="Index">Ana sayfaya dön</a></div>
     </div>
 </section>

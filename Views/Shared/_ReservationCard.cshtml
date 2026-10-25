@@ -1,0 +1,21 @@
+@model Reservation
+
+<article class="reservation-card">
+    <div class="reservation-card-date">
+        <strong>@Model.ReservationDate.ToString("dd")</strong>
+        <span>@Model.ReservationDate.ToString("MMM", new System.Globalization.CultureInfo("tr-TR"))</span>
+    </div>
+    <div class="reservation-card-body">
+        <h4>@Model.CustomerName</h4>
+        <p>@Model.ReservationDate.ToString("HH:mm") · @Model.GuestCount kişi · @Model.SeatingArea</p>
+        @if (Model.IsSpecialOccasion)
+        {
+            <span class="badge">Özel gün</span>
+        }
+        @if (!string.IsNullOrWhiteSpace(Model.Note))
+        {
+            <small>“@Model.Note”</small>
+        }
+    </div>
+    <span class="status @(Model.Status == "Onaylandı" ? "confirmed" : "pending")">@Model.Status</span>
+</article>

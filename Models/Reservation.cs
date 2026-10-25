@@ -24,9 +24,18 @@ public class Reservation
     [Display(Name = "Kişi Sayısı")]
     public int GuestCount { get; set; }
 
+    [Required(ErrorMessage = "Oturma tercihi seçiniz.")]
+    [Display(Name = "Oturma Tercihi")]
+    public string SeatingArea { get; set; } = string.Empty;
+
+    [Display(Name = "Özel gün kutlaması")]
+    public bool IsSpecialOccasion { get; set; }
+
     [Display(Name = "Özel Not")]
     [StringLength(250, ErrorMessage = "Not en fazla 250 karakter olabilir.")]
     public string? Note { get; set; }
 
     public string Status { get; set; } = "Bekliyor";
+
+    public static readonly IReadOnlyList<string> SeatingAreas = new[] { "Salon", "Teras", "Şef Masası", "Özel Oda" };
 }

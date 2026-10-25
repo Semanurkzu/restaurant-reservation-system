@@ -1,19 +1,21 @@
 using Microsoft.AspNetCore.Mvc;
 using RestaurantReservationSystem.Models;
+using RestaurantReservationSystem.Services;
 
 namespace RestaurantReservationSystem.Controllers;
 
 public class ReservationsController : Controller
 {
-    private static readonly List<Reservation> Reservations = new()
+    private readonly ReservationStore _store;
+
+    public ReservationsController(ReservationStore store)
     {
-        new() { Id = 1, CustomerName = "Beyza", Phone = "0500 000 00 01", ReservationDate = DateTime.Today.AddDays(1).AddHours(19), GuestCount = 3, Status = "Onaylandı" },
-        new() { Id = 2, CustomerName = "Nisa", Phone = "0500 000 00 02", ReservationDate = DateTime.Today.AddDays(2).AddHours(20), GuestCount = 2, Status = "Bekliyor" }
-    };
+        _store = store;
+    }
 
     public IActionResult Index()
     {
-        return View(Reservations.OrderBy(reservation => reservation.ReservationDate).ToList());
+        return View(_store.GetAll());
     }
 
     [HttpGet]
@@ -35,22 +37,24 @@ public class ReservationsController : Controller
             ModelState.AddModelError(nameof(reservation.ReservationDate), "Rezervasyon tarihi gelecekte olmalıdır.");
         }
 
+        if (!string.IsNullOrEmpty(reservation.SeatingArea) && !Reservation.SeatingAreas.Contains(reservation.SeatingArea))
+        {
+            ModelState.AddModelError(nameof(reservation.SeatingArea), "Geçerli bir oturma tercihi seçiniz.");
+        }
+
         if (!ModelState.IsValid)
         {
             return View(reservation);
         }
 
-        reservation.Id = Reservations.Count == 0 ? 1 : Reservations.Max(item => item.Id) + 1;
-        reservation.Status = "Bekliyor";
-        Reservations.Add(reservation);
-
-        TempData["ReservationName"] = reservation.CustomerName;
-        TempData["ReservationDate"] = reservation.ReservationDate.ToString("dd.MM.yyyy HH:mm");
-        return RedirectToAction(nameof(Success));
+        var saved = _store.Add(reservation);
+        TempData["NewReservationId"] = saved.Id;
+        return RedirectToAction(nameof(Success), new { id = saved.Id });
     }
 
-    public IActionResult Success()
+    public IActionResult Success(int id)
     {
-        return View();
+        var reservation = _store.Find(id);
+        return reservation is null ? RedirectToAction(nameof(Index)) : View(reservation);
     }
 }

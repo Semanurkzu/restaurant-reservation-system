@@ -1,5 +1,8 @@
 bin/
 obj/
+.vscode-latest/
+.vscode-current/
+.codex-build/
 .vs/
 .vscode/
 *.user
@@ -8,3 +11,4 @@ obj/
 *.sln.docstates
 appsettings.Development.json
 .keys/
+tempCodeRunnerFile.cs

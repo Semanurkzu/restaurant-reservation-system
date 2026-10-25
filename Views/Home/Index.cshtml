@@ -35,6 +35,18 @@
     </div>
 </section>
 
+<section class="section-soft upcoming-section">
+    <div class="container upcoming-grid">
+        <div>
+            <span class="eyebrow">Bu hafta AHENK'te</span>
+            <h2>Masalar dolmaya başladı.</h2>
+            <p class="muted">Rezervasyon formundan gelen talepler burada anında listelenir. Siz de yerinizi ayırtın.</p>
+            <a class="button" asp-controller="Reservations" asp-action="Create">Masa Ayır</a>
+        </div>
+        @await Component.InvokeAsync("UpcomingReservations", new { count = 3 })
+    </div>
+</section>
+
 <section class="experience-section">
     <div class="container">
         <div class="section-heading luxury-heading">
