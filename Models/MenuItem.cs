@@ -10,4 +10,7 @@ public class MenuItem
     public string AccentClass { get; set; } = "accent-terracotta";
     public bool IsChefSpecial { get; set; }
     public string? InspiredBy { get; set; }
+
+    // Her yemeğin malzemelerine göre çizilmiş tabak görseli: wwwroot/images/dishes/{Id}.svg
+    public string ImagePath => $"~/images/dishes/{Id}.svg";
 }

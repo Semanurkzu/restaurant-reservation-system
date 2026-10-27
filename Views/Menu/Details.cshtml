@@ -6,7 +6,7 @@
 
 <section class="detail-section">
     <div class="container detail-grid">
-        <div class="detail-photo"><img src="~/images/signature-dish.png" alt="@Model.Name sunumu" /></div>
+        <div class="detail-photo"><img src="@Url.Content(Model.ImagePath)" alt="@Model.Name tabak sunumu: @Model.Description" /></div>
         <div class="detail-copy">
             <span class="eyebrow">@Model.Category</span>
             @if (Model.IsChefSpecial) { <span class="badge">Şefin seçimi</span> }
