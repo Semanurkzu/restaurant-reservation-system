@@ -11,6 +11,8 @@ public class MenuItem
     public bool IsChefSpecial { get; set; }
     public string? InspiredBy { get; set; }
 
-    // Her yemeğin malzemelerine göre çizilmiş tabak görseli: wwwroot/images/dishes/{Id}.svg
-    public string ImagePath => $"~/images/dishes/{Id}.svg";
+    // Her yemeğin fotoğrafı: wwwroot/images/dishes/{Id}.jpg (kaynak ve lisans: DishPhotoCredits)
+    public string ImagePath => $"~/images/dishes/{Id}.jpg";
+
+    public PhotoCredit? ImageCredit => DishPhotoCredits.For(Id);
 }
